@@ -5,4 +5,4 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/theautomation/bitwarden-cli?logo=github)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/theautomation/bitwarden-cli/main?logo=github)
 
-Application running in Kubernetes <img src="https://github.com/theautomation/kubernetes-gitops/blob/main/assets/img/k8s.png?raw=true" alt="K8s" style="height: 30px; width:30px;"/>
+<img src="https://github.com/theautomation/kubernetes-gitops/blob/main/assets/img/k8s.png?raw=true" alt="K8s" style="height: 30px; width:30px;"/> Application running in Kubernetes 
