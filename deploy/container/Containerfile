@@ -1,4 +1,4 @@
-FROM node:19.1-bullseye-slim
+FROM node:alpine3.16
 
 RUN npm install -g @bitwarden/cli
 
