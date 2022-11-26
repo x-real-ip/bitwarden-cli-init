@@ -38,21 +38,26 @@ metadata:
     app: protonmail-bridge
 data:
   bitwarden-cli-commands.sh: |
-    set -e
+    #!/bin/bash
+    set -ex
     bw config server ${BW_SERVER}
     bw login --apikey
-    export BW_SESSION=$(bw unlock --raw --passwordenv BW_PASSWORD $1)
+    bw unlock --raw --passwordenv BW_PASSWORD > ./.bw_session
+    export BW_SESSION=$(cat ./.bw_session)
+    sleep 5
     export USERNAME=$(bw get username "${BW_ITEMID}")
     export PASSWORD=$(bw get password "${BW_ITEMID}")
     set +e
     export TOTP=$(bw get totp "${BW_ITEMID}")
     set -e
-    cat <<EOF >./.retrieved.env
+    cat <<EOF >/tmp/.retrieved.env
     RETRIEVED_USERNAME="${USERNAME}"
     RETRIEVED_PASSWORD="${PASSWORD}"
     RETRIEVED_TOTP="${TOTP}"
     EOF
-    cat ./.retrieved.env
+    bw logout
+    rm ./.bw_session
+    sleep 3600
 
 ---
 kind: Deployment
@@ -77,8 +82,6 @@ spec:
           image: "harbor.k8s.lan/k8s/bitwarden-cli-init:latest"
           imagePullPolicy: Always
           resources: {}
-          ports:
-            - containerPort: 25
           command: ["/bin/bash"]
           args: ["/home/bitwarden-cli-commands.sh"]
           envFrom:
@@ -90,7 +93,7 @@ spec:
                 optional: true
           volumeMounts:
             - name: bitwarden-cli-output
-              mountPath: /home
+              mountPath: /tmp
             - name: bitwarden-cli-commands
               mountPath: /home/bitwarden-cli-commands.sh
               subPath: bitwarden-cli-commands.sh
