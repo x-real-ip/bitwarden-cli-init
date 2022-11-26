@@ -26,6 +26,7 @@ metadata:
     app: protonmail-bridge
 data:
   BW_SERVER: "https://bitwarden.theautomation.nl"
+  BW_ITEMID: "df5ca176-dd6d-4568-b010-a7e21caa660b"
 
 ---
 kind: ConfigMap
@@ -37,14 +38,21 @@ metadata:
     app: protonmail-bridge
 data:
   bitwarden-cli-commands.sh: |
-    #!/bin/sh
-    set -ex
+    set -e
     bw config server ${BW_SERVER}
     bw login --apikey
-    set +x
-    echo ${BW_PASSWORD} | bw unlock
-    set -x
-    sleep 3600
+    export BW_SESSION=$(bw unlock --raw --passwordenv BW_PASSWORD $1)
+    export USERNAME=$(bw get username "${BW_ITEMID}")
+    export PASSWORD=$(bw get password "${BW_ITEMID}")
+    set +e
+    export TOTP=$(bw get totp "${BW_ITEMID}")
+    set -e
+    cat <<EOF >./.retrieved.env
+    RETRIEVED_USERNAME="${USERNAME}"
+    RETRIEVED_PASSWORD="${PASSWORD}"
+    RETRIEVED_TOTP="${TOTP}"
+    EOF
+    cat ./.retrieved.env
 
 ---
 kind: Deployment
@@ -71,7 +79,7 @@ spec:
           resources: {}
           ports:
             - containerPort: 25
-          command: ["/bin/sh"]
+          command: ["/bin/bash"]
           args: ["/home/bitwarden-cli-commands.sh"]
           envFrom:
             - secretRef:
