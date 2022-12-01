@@ -39,7 +39,7 @@ metadata:
 data:
   bitwarden-cli-commands.sh: |
     #!/bin/bash
-    set -ex
+    set -e
     bw config server ${BW_SERVER}
     bw login --apikey
     bw unlock --raw --passwordenv BW_PASSWORD > ./.bw_session
@@ -57,7 +57,6 @@ data:
     EOF
     bw logout
     rm ./.bw_session
-    sleep 3600
 
 ---
 kind: Deployment
