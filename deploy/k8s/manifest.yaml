@@ -3,6 +3,11 @@ apiVersion: bitnami.com/v1alpha1
 metadata:
   name: bitwarden-cli-env-secrets
   namespace: tools
+  lables:
+    app.kubernetes.io/name: bitwarden-cli
+    app.kubernetes.io/component: cli
+    app.kubernetes.io/instance: production
+    app.kubernetes.io/part-of: vaultwarden
 spec:
   encryptedData:
     BW_CLIENTID: AgDdI9Hb3/BebsZKIqS2NNj1nFSTRh1sWvuMClrqtgwZsN+Kyla5KaAq7uVgGqmJbGLtMNettJNv3Sjn4WZTZnSVfCJTEnc+rTZ9C52s+HlJxSF+nqIbnxzC84pzYlrP3eZ2DbZXTRSWVGK1pQnN/iQnd67oWSA01Ja4Ni0Sca9Cfgvn/aCA/5VoxLpq3q08mT0xjMFpIvL+gjZHdM9zanQqglIpIoM9eqIB/Ar6Jc9I+C9QOVAmGSRhAm64mgJlmTS1VIZTcrSphqNRUWO0xPhzfZvxWLgmNRrDu4awOHJlVoT3SgzSdVf8/RY/vM7tHjvpgM9Cl13tQkpvMHVnUErKNUbHGY6nSb0bgO9VkYEMxkLzWi65qG6Fb4W915Z/mAb2fJG8eWQl4xZTEGVj8BCLARqF1eYbYCVeUfB8AhSENvlTHGlVKXOsh83yx8xhtaw+3c2LXxWkUUeFJUepreOXDB8JLU0XQPY59KPs/iAPjDDNGrh6fxGIKeiFVhpqYAHhCY0ddL2DhHMsFR3ICxrYMvdTWugxtRFyr/Lt2XrbUvm1PJu86bpGevuUuTSYq4pNH3KY60MCsHe76CM91oPdIJuuIgoVmf4ZRL9ESuu0ByR0qDAAFUyYwCbQ2sx6p2DUVmyLGScjlJTJ77fZ9vd/qWnA4LeLQ3Lk/FpOHenQp57VDcixQxIhvwwSWxk6OD0Sdw1biNcl3R3WltlMDTcETBqYgml2pgv/H58Amo7nxFMHOtt1G9jxJA==
@@ -23,10 +28,13 @@ metadata:
   name: bitwarden-cli-env
   namespace: tools
   labels:
-    app: protonmail-bridge
+    app.kubernetes.io/name: bitwarden-cli
+    app.kubernetes.io/component: cli
+    app.kubernetes.io/instance: production
+    app.kubernetes.io/part-of: vaultwarden
 data:
   BW_SERVER: "https://bitwarden.theautomation.nl"
-  BW_ITEMID: "df5ca176-dd6d-4568-b010-a7e21caa660b"
+  BW_ITEMID: "<itemid>" # Item to pull from vault
 
 ---
 kind: ConfigMap
@@ -35,7 +43,10 @@ metadata:
   name: bitwarden-cli-commands
   namespace: tools
   labels:
-    app: protonmail-bridge
+    app.kubernetes.io/name: bitwarden-cli
+    app.kubernetes.io/component: cli
+    app.kubernetes.io/instance: production
+    app.kubernetes.io/part-of: vaultwarden
 data:
   bitwarden-cli-commands.sh: |
     #!/bin/bash
@@ -65,16 +76,25 @@ metadata:
   name: bitwarden-cli
   namespace: tools
   labels:
-    app: bitwarden-cli
+    app.kubernetes.io/name: bitwarden-cli
+    app.kubernetes.io/component: cli
+    app.kubernetes.io/instance: production
+    app.kubernetes.io/part-of: vaultwarden
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bitwarden-cli
+      app.kubernetes.io/name: bitwarden-cli
+      app.kubernetes.io/component: cli
+      app.kubernetes.io/instance: production
+      app.kubernetes.io/part-of: vaultwarden
   template:
     metadata:
       labels:
-        app: bitwarden-cli
+        app.kubernetes.io/name: bitwarden-cli
+        app.kubernetes.io/component: cli
+        app.kubernetes.io/instance: production
+        app.kubernetes.io/part-of: vaultwarden
     spec:
       containers:
         - name: bitwarden-cli
