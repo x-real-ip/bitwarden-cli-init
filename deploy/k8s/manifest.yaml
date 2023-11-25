@@ -98,7 +98,7 @@ spec:
     spec:
       containers:
         - name: bitwarden-cli
-          image: "harbor.k8s.lan/k8s/bitwarden-cli-init:latest"
+          image: "harbor.lan.theautomation.nl/k8s/bitwarden-cli-init:latest"
           imagePullPolicy: Always
           resources: {}
           command: ["/bin/bash"]
