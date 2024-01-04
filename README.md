@@ -1,6 +1,6 @@
 # bitwarden-cli-init
 
-[![Build Status](https://drone.theautomation.nl/api/badges/theautomation/bitwarden-cli-init/status.svg)](https://drone.theautomation.nl/theautomation/bitwarden-cli-init)
+[![Continuous integration](https://github.com/theautomation/bitwarden-cli-init/actions/workflows/ci.yaml/badge.svg)](https://github.com/theautomation/bitwarden-cli-init/actions/workflows/ci.yaml)
 ![GitHub repo size](https://img.shields.io/github/repo-size/theautomation/bitwarden-cli-init?logo=Github)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/theautomation/bitwarden-cli-init?logo=github)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/theautomation/bitwarden-cli-init/main?logo=github)
