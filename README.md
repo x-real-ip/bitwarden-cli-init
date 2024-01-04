@@ -8,13 +8,14 @@
 <img src="https://github.com/theautomation/kubernetes-gitops/blob/main/assets/img/k8s.png?raw=true" alt="K8s" style="height: 30px; width:30px;"/>
 Application running in Kubernetes
 
-This deployment (Kubernets pod) can be used as an init kubernetes container to
-pull a secret from a Bitwarden vault and share the secret with the main
-container(s) via a file, you can mount this file into the main container(s)
 
-Create a Kubernets secret with the credentials of you Bitwarden/Vaultwarden
-instance like this (I am using sealedsecret to encrypt password and other
-secrets)
+This Kubernetes pod deployment can serve as an init container to retrieve a
+secret from a Bitwarden vault and share it with the main container(s) through a
+file. You can mount this file into the main container(s).
+
+To use this, create a Kubernetes secret with the credentials for your
+Bitwarden/Vaultwarden instance. For instance, I am utilizing sealedsecret to
+encrypt passwords and other secrets
 
 ```yaml
 kind: SealedSecret
@@ -41,10 +42,10 @@ spec:
     type: Opaque
 ```
 
-It pulls by default a 'username', 'password' and 'TOTP' and make them in a file
-on this location `/tmp/.retrieved.env`. Use the command
-`eval $(cat /tmp/.retrieved.env)` to make the vaiables available as OS
-environment variables inside the container(s).
+It pulls, by default, a 'username,' 'password,' and 'TOTP' and saves them in a
+file at this location: `/tmp/.retrieved.env`. Use the command
+`eval $(cat /tmp/.retrieved.env)` to make the variables available as OS
+environment variables inside the container(s)."
 
 ```bash
 cat <<EOF >/tmp/.retrieved.env
