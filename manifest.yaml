@@ -33,7 +33,7 @@ metadata:
     app.kubernetes.io/instance: production
     app.kubernetes.io/part-of: vaultwarden
 data:
-  BW_SERVER: "https://bitwarden.theautomation.nl"
+  BW_SERVER: "https://bitwarden.stamx.nl"
   BW_ITEMID: "<itemid>" # Item to pull from vault
 
 ---
@@ -98,7 +98,7 @@ spec:
     spec:
       containers:
         - name: bitwarden-cli
-          image: "ghcr.io/theautomation/bitwarden-cli-init:main"
+          image: "ghcr.io/x-real-ip/bitwarden-cli-init:main"
           imagePullPolicy: Always
           resources: {}
           command: ["/bin/bash"]
