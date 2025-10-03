@@ -1,11 +1,11 @@
 # bitwarden-cli-init
 
-[![Continuous integration](https://github.com/theautomation/bitwarden-cli-init/actions/workflows/ci.yaml/badge.svg)](https://github.com/theautomation/bitwarden-cli-init/actions/workflows/ci.yaml)
-![GitHub repo size](https://img.shields.io/github/repo-size/theautomation/bitwarden-cli-init?logo=Github)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/y/theautomation/bitwarden-cli-init?logo=github)
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/theautomation/bitwarden-cli-init/main?logo=github)
+[![Continuous integration](https://github.com/x-real-ip/bitwarden-cli-init/actions/workflows/ci.yaml/badge.svg)](https://github.com/x-real-ip/bitwarden-cli-init/actions/workflows/ci.yaml)
+![GitHub repo size](https://img.shields.io/github/repo-size/x-real-ip/bitwarden-cli-init?logo=Github)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/x-real-ip/bitwarden-cli-init?logo=github)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/x-real-ip/bitwarden-cli-init/main?logo=github)
 
-<img src="https://github.com/theautomation/kubernetes-gitops/blob/main/assets/img/k8s.png?raw=true" alt="K8s" style="height: 30px; width:30px;"/>
+<img src="https://github.com/x-real-ip/kubernetes-gitops/blob/main/assets/img/k8s.png?raw=true" alt="K8s" style="height: 30px; width:30px;"/>
 Application running in Kubernetes
 
 
