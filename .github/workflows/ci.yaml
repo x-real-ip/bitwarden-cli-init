@@ -16,7 +16,7 @@ jobs:
     needs: [yamllint]
     uses: x-real-ip/github-actions/.github/workflows/build-and-push.yaml@main
     with:
-      publish: true
+      push: true
 
   dispatch-update-manifest:
     name: Repository Dispatch to Update Manifest
