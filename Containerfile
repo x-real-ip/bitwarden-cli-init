@@ -1,4 +1,4 @@
-FROM node:alpine3.16
+FROM node:alpine3.24
 
 RUN npm install -g @bitwarden/cli \
     && apk add --no-cache \
